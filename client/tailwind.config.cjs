@@ -4,6 +4,12 @@ module.exports = {
   content: ['./src/**/*.{js,jsx}'],
   theme: {
     extend: {
+      keyframes: {
+        player: {
+          '0%, 100%': { transform: 'translateX(0px)' },
+          '50%': { transform: 'translateX(-50px)' },
+        },
+      },
       screens: {
         xs: '480px',
       },
@@ -17,5 +23,4 @@ module.exports = {
     },
   },
   plugins: [],
-};
-
+}
