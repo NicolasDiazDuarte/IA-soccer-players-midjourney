@@ -101,113 +101,115 @@ const CreatePost = () => {
         </p>
       </div>
 
-      <form className="mt-10 max-w-3xl relative" onChange={handleupload} onSubmit={handleSubmit}>
-        <div className="flex flex-col gap-5">
-          <FormField
-            labelName="Soccer card ID"
-            type="text"
-            name="nftID"
-            placeholder="Ex. 0000001"
-            value={form.nftID}
-            handleChange={handleChange}
-          />
+      <form className="mt-10 max-w-7xl relative" onChange={handleupload} onSubmit={handleSubmit}>
+        <div className="flex flex-wrap gap-5 space-between">
+          <div className="w-1/2 flex flex-wrap gap-4">
+            <FormField
+              labelName="Soccer card ID"
+              type="text"
+              name="nftID"
+              placeholder="Ex. 0000001"
+              value={form.nftID}
+              handleChange={handleChange}
+            />
 
-          <FormField
-            labelName="Player full name"
-            type="text"
-            name="name"
-            placeholder="Ex Lionel Messi"
-            value={form.name}
-            handleChange={handleChange}
-          />
+            <FormField
+              labelName="Player full name"
+              type="text"
+              name="name"
+              placeholder="Ex Lionel Messi"
+              value={form.name}
+              handleChange={handleChange}
+            />
 
-          <FormField
-            labelName="Version"
-            type="Number"
-            name="version"
-            placeholder="2012"
-            value={form.version}
-            handleChange={handleChange}
-          />
+            <FormField
+              labelName="Version"
+              type="Number"
+              name="version"
+              placeholder="2012"
+              value={form.version}
+              handleChange={handleChange}
+            />
 
-          <FormField
-            labelName="Age"
-            type="Number"
-            name="age"
-            placeholder="18"
-            value={form.age}
-            handleChange={handleChange}
-          />
+            <FormField
+              labelName="Team"
+              type="text"
+              name="team"
+              placeholder="Barcelona"
+              value={form.team}
+              handleChange={handleChange}
+            />
 
-          <FormField
-            labelName="Rating"
-            type="Number"
-            name="rating"
-            placeholder="81"
-            value={form.rating}
-            handleChange={handleChange}
-          />
+            <FormField
+              labelName="Rating"
+              type="Number"
+              name="rating"
+              placeholder="81"
+              value={form.rating}
+              handleChange={handleChange}
+            />
 
-          <div>
-            <div className="flex items-center gap-2 mb-2">
-              <label htmlFor="position" className="block text-sm font-medium text-gray-900">
-                Position
-              </label>
-            </div>
-            <select
-              type="select"
-              id="position"
-              name="position"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#6469ff] focus:border-[#6469ff] outline-none block w-full p-3"
-              value={form.position}
-              onChange={handleChange}
-            >
-              <option value="GK">GK</option>
-              <option value="CB">CB</option>
-              <option value="LB">LB</option>
-              <option value="RB">RB</option>
-              <option value="CDM">CDM</option>
-              <option value="CM">CM</option>
-              <option value="MCO">MCO</option>
-              <option value="RM">RM</option>
-              <option value="LM">LM</option>
-              <option value="ED">ED</option>
-              <option value="EI">EI</option>
-              <option value="SD">SD</option>
-              <option value="DC">DC</option>
-            </select>
-          </div>
-
-          <FormField
-            labelName="Team"
-            type="text"
-            name="team"
-            placeholder="Barcelona"
-            value={form.team}
-            handleChange={handleChange}
-          />
-
-          <div className="relative bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-64 p-3 h-64 flex justify-center items-center">
-            {form.photo ? (
-              <img src={form.photo} alt={form.prompt} className="w-full h-full object-contain" />
-            ) : (
-              <img src={preview} alt="preview" className="w-9/12 h-9/12 object-contain opacity-40" />
-            )}
-
-            {generatingImg && (
-              <div className="absolute inset-0 z-0 flex justify-center items-center bg-[rgba(0,0,0,0.5)] rounded-lg">
-                <Loader />
+            <div>
+              <div className="flex items-center gap-2 mb-2">
+                <label htmlFor="position" className="block text-sm font-medium text-gray-900">
+                  Position
+                </label>
               </div>
-            )}
-          </div>
-        </div>
+              <select
+                type="select"
+                id="position"
+                name="position"
+                className="bg-gray-50 border border-black text-gray-900 text-sm rounded-lg focus:ring-[#6469ff] focus:border-[#6469ff] outline-none block w-full p-3"
+                value={form.position}
+                onChange={handleChange}
+              >
+                <option value="GK">GK</option>
+                <option value="CB">CB</option>
+                <option value="LB">LB</option>
+                <option value="RB">RB</option>
+                <option value="CDM">CDM</option>
+                <option value="CM">CM</option>
+                <option value="MCO">MCO</option>
+                <option value="RM">RM</option>
+                <option value="LM">LM</option>
+                <option value="ED">ED</option>
+                <option value="EI">EI</option>
+                <option value="SD">SD</option>
+                <option value="DC">DC</option>
+              </select>
+            </div>
 
-        <div className="mt-5 flex gap-5">
-          {!uploadingImg && (
-            <p className=" text-white bg-green-700 font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center">
-              <input type="file" name="file" />
-            </p>
-          )}
+            <FormField
+              labelName="Age"
+              type="Number"
+              name="age"
+              placeholder="18"
+              value={form.age}
+              handleChange={handleChange}
+            />
+          </div>
+          <div className="w-5/12 left-[30%]">
+            <div className="relative mt-6 mr-12 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-44 p-3 h-44 flex justify-center items-center">
+              {form.photo ? (
+                <img src={form.photo} alt={form.prompt} className="absolute w-full h-full object-contain" />
+              ) : (
+                <img src={preview} alt="preview" className="absolute w-9/12 h-9/12 object-contain opacity-40" />
+              )}
+
+              {generatingImg && (
+                <div className="absolute inset-0 z-0 flex justify-center items-center bg-[rgba(0,0,0,0.5)] rounded-lg">
+                  <Loader />
+                </div>
+              )}
+            </div>
+            <div className="m-auto mt-2 gap-5 w-max">
+              {!uploadingImg && (
+                <p className=" text-white bg-green-700 font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center">
+                  <input type="file" name="file" />
+                </p>
+              )}
+            </div>
+          </div>
         </div>
 
         <div className="mt-10">

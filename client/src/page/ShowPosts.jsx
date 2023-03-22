@@ -66,7 +66,7 @@ const ShowPosts = () => {
           Upload a soccer card through Midjourney AI and share it with the community
         </p>
       </div>
-      <div className="max-w-7xl mx-auto mt-10 relative">
+      <div className="max-w-7xl mx-auto mt-4 relative">
         <FormField
           labelName="Search players"
           type="text"
