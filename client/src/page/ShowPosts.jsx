@@ -76,7 +76,7 @@ const ShowPosts = () => {
           handleChange={handleSearchChange}
         />
       </div>
-      <div className="mt-10 max-w-7xl mx-auto relative">
+      <div className="mt-4 max-w-7xl mx-auto relative">
         {loading ? (
           <div className="flex justify-center items-center">
             <Loader />
