@@ -1,15 +1,17 @@
 import React from 'react'
-
-import { download } from '../assets'
-import { downloadImage } from '../utils'
+import '../card.scss'
 
 const Card = ({ _id, name, team, photo, version, nftID, rating, age, position }) => (
-  <div className="rounded-xl group relative shadow-card h">
-    <div className=" absolute text-[#0ce85d] border-4 border-[#0ce85d] rounded-full ml-auto text-4xl font-extrabold right-6 top-0">
-      <p className="p-1">{rating}</p>
-    </div>
-    <img className="w-72 h-auto  border-4 border-black object-cover rounded-t-xl" src={photo} />
-    <div className=" w-72  border-2 border-black flex-col object-cover max-h-[94.5%] bottom-0 left-0 right-0  bg-gradient-to-r from-[#e1d5e6] to-neutral-100 p-2 rounded-b-md">
+  <div className="group relative shadow-card cards--three cards">
+    <span class="cards--three__rect-2">
+      <span class="shadow-2"></span>
+    </span>
+    <ul className="cards--three__list">
+      <li className="p-1 text-[#77f0ba] font-extrabold">{rating}</li>
+    </ul>
+    <img className=" h-auto  border-4 border-black object-cover rounded-t-xl" src={photo} />
+    <span class="cards--three__circle"></span>
+    <div className="  border-2 border-black flex-col object-cover max-h-[94.5%] bottom-0 left-0 right-0  bg-gradient-to-r from-[#e1d5e6] to-neutral-100 p-2 rounded-b-md">
       <div className="flex justify-between items-center gap-2">
         <p className="text-[#666e75] text-sm overflow-y-auto prompt">#{nftID}</p>
         {/* <button
