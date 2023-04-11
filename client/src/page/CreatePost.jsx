@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import { preview } from '../assets'
@@ -8,11 +8,18 @@ import * as Yup from 'yup'
 const CreatePost = () => {
   const navigate = useNavigate()
   const ref = useRef(null)
+  const [nftID, setNftID] = useState('')
 
   const [generatingImg, setGeneratingImg] = useState(false)
   const [loading, setLoading] = useState(false)
   const [uploadingImg, setUploadingImg] = useState(false)
   const [uploadData, setUploadData] = useState(null)
+
+  useEffect(() => {
+    const randomNum = Math.floor(Math.random() * 9999999) + 1
+    const paddedNum = randomNum.toString().padStart(7, '0')
+    setNftID(paddedNum)
+  }, [])
 
   function handleupload(changeEvent, formik) {
     const reader = new FileReader()
@@ -35,7 +42,7 @@ const CreatePost = () => {
       </div>
       <Formik
         initialValues={{
-          nftID: '',
+          nftID: (Math.floor(Math.random() * 9999999) + 1).toString().padStart(7, '0'),
           name: '',
           version: '',
           age: '',
@@ -95,11 +102,11 @@ const CreatePost = () => {
                         <label className="block text-sm font-medium text-gray-900">Soccer card ID</label>
                       </div>
                       <Field
+                        disabled
                         type="text"
                         name="nftID"
                         placeholder="Ex. 0000001"
-                        className="bg-gray-50 border border-black text-gray-900 text-sm rounded-lg focus:ring-[#6469ff] focus:border-[#6469ff] outline-none block w-full p-3"
-                        // value={form.nftID}
+                        className="bg-gray-50 border border-black text-gray-900 text-sm rounded-lg focus:ring-[#6469ff] focus:border-[#6469ff] outline-none block w-full p-3 disabled:bg-gray-300 disabled:text-gray-500 disabled:border-gray-300"
                         // handleChange={handleChange}
                       />
                       <ErrorMessage component="label" className="text-red-500 text-sm" name="nftID"></ErrorMessage>
