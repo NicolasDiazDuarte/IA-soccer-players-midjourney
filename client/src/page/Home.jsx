@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom'
+import { Menu, Transition } from '@headlessui/react'
 import { colors, players } from '../assets'
 
 const Home = () => {
+  function classNames(...classes) {
+    return classes.filter(Boolean).join(' ')
+  }
+
   return (
     <>
       <section className="max-w-7xl mx-auto px-4 py-12">
@@ -15,12 +20,75 @@ const Home = () => {
               Midjourney AI
             </p>
             <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
-              <Link to="/create-post" className="font-inter font-medium bg-[#6469ff] text-white py-2 px-4 rounded-md">
-                Create a new player
-              </Link>
-              <Link to="/show-posts" className="font-inter font-medium bg-[#6469ff] text-white py-2 px-4 rounded-md">
+              <Link
+                to="/show-posts"
+                className="font-inter font-medium bg-[#6469ff] text-white py-2 px-4 rounded-md hover:bg-[#888beb]"
+              >
                 Show players created
               </Link>
+              <Menu as="div" className="relative inline-block text-left">
+                <div>
+                  <Menu.Button className="font-inter font-medium bg-[#6469ff] text-white py-2 px-4 rounded-md hover:bg-[#888beb]">
+                    Create...
+                  </Menu.Button>
+                </div>
+
+                <Transition
+                  as={Fragment}
+                  enter="transition ease-out duration-100"
+                  enterFrom="transform opacity-0 scale-95"
+                  enterTo="transform opacity-100 scale-100"
+                  leave="transition ease-in duration-75"
+                  leaveFrom="transform opacity-100 scale-100"
+                  leaveTo="transform opacity-0 scale-95"
+                >
+                  <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <div className="py-1">
+                      <Menu.Item>
+                        {({ active }) => (
+                          <Link
+                            to="/create-post"
+                            href="#"
+                            className={classNames(
+                              active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                              'block px-4 py-2 text-sm'
+                            )}
+                          >
+                            Create a new player
+                          </Link>
+                        )}
+                      </Menu.Item>
+
+                      <Menu.Item>
+                        {({ active }) => (
+                          <button
+                            href="/"
+                            className={classNames(
+                              active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                              'block px-4 py-2 text-sm'
+                            )}
+                          >
+                            Create a new logo(soon)
+                          </button>
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {({ active }) => (
+                          <button
+                            href="/"
+                            className={classNames(
+                              active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                              'block w-full px-4 py-2 text-left text-sm'
+                            )}
+                          >
+                            Create a new kit(soon)
+                          </button>
+                        )}
+                      </Menu.Item>
+                    </div>
+                  </Menu.Items>
+                </Transition>
+              </Menu>
             </div>
           </div>
         </div>
